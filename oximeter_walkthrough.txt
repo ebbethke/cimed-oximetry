@@ -16,7 +16,7 @@ To select certain rows and certain columns, use this (start from 0):
 <br>
  
 #NEW3
-## Absolutely.  Here's how to fit a curve to a list of numbers using numpy.
+##Absolutely.  Here's how to fit a curve to a list of numbers using numpy.
 <br> 
 You call it on a list of numbers to get the polynomial 
 coefficients ($ax^2 + bx + c$), like this:
@@ -29,7 +29,7 @@ Where ```x``` and ```y``` are lists.  The second line takes care of floating poi
 You can now use the numbers stored in polys to report or calculate the curve fit.
   
 #NEW4
-## Okay!  To split your data up into pieces is pretty straight forward once you know the syntax.
+##Okay!  To split your data up into pieces is pretty straight forward once you know the syntax.
 <br>
 I gave you a pandas DataFrame, which is VERY similar to a dataframe in R (coincidence???)
 To get one column, use the 'iloc' or 'index location' method like so:
