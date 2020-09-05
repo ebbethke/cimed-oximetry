@@ -1,6 +1,5 @@
 #NEW2
 ##Sure thing! Here's what you can do:
-<br>
 To take the average of the rows (start from 0),
 you can use the following code:
 <br>
@@ -17,7 +16,7 @@ To select certain rows and certain columns, use this (start from 0):
  
 #NEW3
 ##Absolutely.  Here's how to fit a curve to a list of numbers using numpy.
-<br> 
+&nbsp;
 You call it on a list of numbers to get the polynomial 
 coefficients ($ax^2 + bx + c$), like this:
 <br>
@@ -30,7 +29,7 @@ You can now use the numbers stored in polys to report or calculate the curve fit
   
 #NEW4
 ##Okay!  To split your data up into pieces is pretty straight forward once you know the syntax.
-<br>
+&nbsp;
 I gave you a pandas DataFrame, which is VERY similar to a dataframe in R (coincidence???)
 To get one column, use the 'iloc' or 'index location' method like so:
 <br>
@@ -65,6 +64,7 @@ where my_list is any list.  Note: pandas dataframes are not lists.
   
 #NEW5
 ##No problem. For the mean of the pandas data (raw), you can use the mean function.
+&nbsp;
 To take a mean of a row:
 <br>
 ```row_mean = trial_results.iloc[row, :].mean()```
@@ -107,9 +107,10 @@ where you fill in a number for ```row```.  NOTE: you have to do this per row, or
 z-score won't make sense.  You'll now have a list of good data in clean_row_data.
  
 #NEW7
-##Excellent, here's a good way to tackle interpolation.  We'll use SciPy
-to create a function that will allow us to fit a function to our x,y data, 
-and then call that function with any new x_new to get a proper y_new value.
+##Excellent, here's a good way to tackle interpolation.  
+We'll use SciPy to create a function that will allow us to fit a 
+function to our x,y data, and then call that function with any 
+new x_new to get a proper y_new value.
 Do this like so:
 <br>
 ```func =  interp1d(x, y, kind='quadratic', fill_value='extrapolate')```
