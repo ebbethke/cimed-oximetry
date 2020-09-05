@@ -1,5 +1,5 @@
 #NEW2
-## Sure thing! Here's what you can do:
+##Sure thing! Here's what you can do:
 <br>
 To take the average of the rows (start from 0),
 you can use the following code:
@@ -64,7 +64,7 @@ To get specific values from a list, you can slice the list like this:
 where my_list is any list.  Note: pandas dataframes are not lists.  
   
 #NEW5
-## No problem. For the mean of the pandas data (raw), you can use the mean function.
+##No problem. For the mean of the pandas data (raw), you can use the mean function.
 To take a mean of a row:
 <br>
 ```row_mean = trial_results.iloc[row, :].mean()```
@@ -97,7 +97,7 @@ To get the standard deviation of a list, use numpy like this:
 where ```my_list``` is a list.
  
 #NEW6
-## Cool.  So we'll define our outliers as being 1 z score away,
+##Cool.  So we'll define our outliers as being 1 z score away,
 we arrive at a formula we can apply on our pandas dataframe row with both of the following lines:
 <br>
 ```cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1)[0]```<br>
@@ -107,7 +107,7 @@ where you fill in a number for ```row```.  NOTE: you have to do this per row, or
 z-score won't make sense.  You'll now have a list of good data in clean_row_data.
  
 #NEW7
-## Excellent, here's a good way to tackle interpolation.  We'll use SciPy
+##Excellent, here's a good way to tackle interpolation.  We'll use SciPy
 to create a function that will allow us to fit a function to our x,y data, 
 and then call that function with any new x_new to get a proper y_new value.
 Do this like so:
@@ -129,7 +129,7 @@ or on a whole list of values to get all those values fit to the curve:
 which would then return the predicted values for our ```R``` ratio at 75, 77, ...97, 99% SpO2 in a list.
  
 #NEW8
-## Right.  So the reason we don't calibrate each time we use the device is
+Right.  So the reason we don't calibrate each time we use the device is
 that we've gone through the process to relate the device's average response
 to a given SaO2.  This is called an empirical fit.  
 <br>
