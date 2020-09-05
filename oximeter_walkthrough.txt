@@ -1,15 +1,15 @@
 #NEW2
 ##Sure thing! Here's what you can do:
-To take the average of the rows (start from 0),
+To take the average of all the rows,
 you can use the following code:
 <br>
 ```sao2_averages = trial_results.mean(axis=1).to_list()```
 <br>
-If you want all rows but certain columns, use this code and replace the 'c' with numbers (start from 0):
+If you want all rows but certain columns, use this code and replace the ```c``` with numbers (start from 0):
 <br>
 ```sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()```
 <br>
-To select certain rows and certain columns, use this (start from 0):
+To average certain rows from only certain columns, use this (start from 0):
 <br>
 ```sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()```
 <br>
@@ -97,14 +97,16 @@ To get the standard deviation of a list, use numpy like this:
 where ```my_list``` is a list.
  
 #NEW6
-##Cool.  So we'll define our outliers as being 1 z score away,
+##Cool. We'll use a modified z-score to figure out which are outliers.
+&nbsp;
+So we'll define our outliers as being 1 z score away,
 we arrive at a formula we can apply on our pandas dataframe row with both of the following lines:
 <br>
 ```cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1)[0]```<br>
 ```clean_row_data = trial_results.iloc[row, cols_to_keep].to_list()```
 <br>
 where you fill in a number for ```row```.  NOTE: you have to do this per row, or else the 
-z-score won't make sense.  You'll now have a list of good data in clean_row_data.
+z-score won't make sense.  You'll now have a list of good data in ```clean_row_data```.
  
 #NEW7
 ##Excellent, here's a good way to tackle interpolation.  
@@ -134,20 +136,17 @@ Right.  So the reason we don't calibrate each time we use the device is
 that we've gone through the process to relate the device's average response
 to a given SaO2.  This is called an empirical fit.  
 <br>
-<br>
 As long as we assume the device 
 won't change, the average response won't change.  Because this is a non-invasive
 measurement, we don't really expect the device to change that much over its useful life,
 at least for the little finger clip ones.
 <br>
-<br>
 By contrast, a machine like a scale constantly gets deformed and moved around,
 so it should make sense that over time the materials and sensors in the scale 
 may move around or wear out a bit and thus need to be re-calibrated.
 <br>
-<br>
 There is an open question we leave to you as to how good of a job the 
-empirical fit is.  There has been research into how to make oximeters 
+empirical fit does given what you've seen here.  There has been research into how to make oximeters 
 more accurate/less biased; is this worth the time and investment?
 As a future physician, would you trust a pulse oximeter to give you the 
 right answer?  Why or why not?  Would you rather use a more expensive 
