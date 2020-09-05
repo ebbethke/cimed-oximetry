@@ -24,6 +24,8 @@ coefficients ($ax^2 + bx + c$), like this:
 ```polys = np.polyfit(x, y, deg=2)```<br>
 ```polys = [round(coeff,6) for coeff in polys]```
 <br>
+Where ```x``` and ```y``` are lists.  The second line takes care of floating point errors.
+```polys``` will now contain the numeric values for ```a, b, c```.
 You can now use the numbers stored in polys to report or calculate the curve fit.
   
 #NEW4
@@ -66,13 +68,14 @@ No problem. For the mean of the pandas data (raw), you can use the mean function
 To take a mean of a row:
 <br>
 ```row_mean = trial_results.iloc[row, :].mean()```
-where row is a number of the column you want (start from 0)
+<br>
+where ```row``` is a number of the row you want (start from 0)
 ...
 To take the mean of a list, use numpy like this:
 <br>
 ```np.mean(my_list)```
 <br>
-where my_list is a list.
+where ```my_list``` is a list.
 <br>
 <br>
 To get a standard deviation of a pandas dataframe row, use:
@@ -91,7 +94,7 @@ To get the standard deviation of a list, use numpy like this:
 <br>
 ```std_dev = np.std(my_list)```
 <br>
-where my_list is a list.
+where ```my_list``` is a list.
  
 #NEW6
 Cool.  So we'll define our outliers as being 1 z score away,
