@@ -1,0 +1,104 @@
+#NEW2
+Sure thing! Here's what you can do:
+To take the average of the rows (start from 0),
+you can use the following code:
+\t sao2_averages = trial_results.mean(axis=1).to_list()
+If you want all rows but certain columns, use this code and replace the 'c' with numbers (start from 0):
+\t sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()
+To select certain rows and certain columns, use this (start from 0):
+\t sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()
+
+#NEW3
+Absolutely.  Here's how to fit a curve to a list of numbers using numpy. 
+You call it on a list of numbers to get the polynomial 
+coefficients (ax^2 + bx + c), like this:
+ \t polys = np.polyfit(x, y, degree=2)
+ You can now use the numbers stored in polys to report or calculate the curve fit.
+ 
+#NEW4
+Okay!  To split your data up into pieces is pretty straight forward once you know the syntax.
+I gave you a pandas DataFrame, which is VERY similar to a dataframe in R (coincidence???)
+To get one column, use the 'iloc' or 'index location' method like so:
+\t my_column = trial_results.iloc[:, col].to_list()
+where col is a number (start from 0).  To get a range of columns by number, 
+you can flatten them to one list (sticking one column after the other) like so:
+\t my_columns = trial_results[:, [2,3,5,8]].values.flatten('F')
+...
+To grab a row, use the 'iloc' index again like this:
+\t my_row = trial_results[row, :].to_list()
+where row is a number.  To get multiple rows, you can flatten like so:
+\t my_rows = trial_results.iloc[[1,2,4],:].values.flatten('C')
+which will put the rows one after the other into the list.
+...
+To get specific values from a list, you can slice the list like this:
+\t first_five = my_list[:5]
+\t last three = my_list[-3:]
+\t second_to_eighth = my_list[2:9]
+\t odds = my_list[0::2]
+\t evens = my_list[1::2]
+\t every_third = my_list[::3]
+ where my_list is any list.  Note: pandas dataframes are not lists.  
+ 
+#NEW5
+No problem. For the mean of the pandas data (raw), you can use the mean function.
+To take a mean of a row:
+\t row_mean = trial_results.iloc[row, :].mean()
+where row is a number of the column you want (start from 0)
+...
+To take the mean of a list, use numpy like this:
+\t np.mean(my_list)
+where my_list is a list.
+...
+To get a standard deviation of a pandas dataframe row, use:
+\t row_std_dev = trial_results.iloc[row, :].std(axis=1)
+To get standard deviation for multipl rows, use this:
+\t rows_std_dev = trial_results.iloc[[r,r,r], :].std(axis=1).to_list()
+where 'r' are numbers of the rows (start from 0).
+...
+To get the standard deviation of a list, use numpy like this:
+\t std_dev = np.std(my_list)
+where my_list is a list.
+
+#NEW6
+Cool.  So we'll define our outliers as being 1 z score away,
+we arrive at a formula we can apply on our pandas dataframe row with both of the following lines:
+\t cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1)[0]
+\t clean_row_data = trial_results.iloc[row, cols_to_keep].to_list()
+where you fill in a number for row.  NOTE: you have to do this per row, or else the 
+z-score won't make sense.  You'll now have a list of good data in clean_row_data.
+
+#NEW7
+Excellent, here's a good way to tackle interpolation.  We'll use SciPy
+to create a function that will allow us to fit a function to our x,y data, 
+and then call that function with any new x_new to get a proper y_new value.
+Do this like so:
+\t func =  interp1d(x, y, kind='quadratic', fill_value='extrapolate')
+...where x and y are lists.  To call this on a column from the trial data, use this:
+\t func = interp1d(trial_results.index.to_list(), trial_results.iloc[:, col].to_list(), kind='quadratic', fill_value='extrapolate')
+this function returns... another function! we can call it to get other values like this:
+\t res = func(87.5)
+or on a whole list of values to get all those values fit to the curve:
+\t x = np.arange(75, 99, 2) # x now contains a list from 75 to 99, by 2s.
+\t y = func(x)
+which would then return the predicted values for our R ratio at 75, 77, ...97, 99% SpO2 in a list.
+
+#NEW8
+Right.  So the reason we don't calibrate each time we use the device is
+that we've gone through the process to relate the device's average response
+to a given SaO2.  This is called an empirical fit.  As long as we assume the device 
+won't change, the average response won't change.  Because this is a non-invasive
+measurement, we don't really expect the device to change that much over its useful life,
+at least for the little finger clip ones.  Some 
+...
+By contrast, a machine like a scale constantly gets deformed and moved around,
+so it should make sense that over time the materials and sensors in the scale 
+may move around or wear out a bit and thus need to be re-calibrated.
+...
+There is an open question we leave to you as to how good of a job the 
+empirical fit is.  There has been research into how to make oximeters 
+more accurate/less biased; is this worth the time and investment?
+As a future physician, would you trust a pulse oximeter to give you the 
+right answer?  Why or why not?  Would you rather use a more expensive 
+research equipment if it means you pass that cost of care onto your patient?
+When might that trade off be worth it?  How about for an ABG?  There are
+lots of questions for you to consider.
