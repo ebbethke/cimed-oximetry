@@ -99,14 +99,15 @@ where ```my_list``` is a list.
 #NEW6
 ##Cool. We'll use a modified z-score to figure out which are outliers.
 &nbsp;
-So we'll define our outliers as being 1 z score away,
+So we'll define our outliers as being 1.25 z score away,
 we arrive at a formula we can apply on our pandas dataframe row with both of the following lines:
 <br>
-```cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1)[0]```<br>
+```cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1.25)[0]```<br>
 ```clean_row_data = trial_results.iloc[row, cols_to_keep].to_list()```
 <br>
 where you fill in a number for ```row```.  NOTE: you have to do this per row, or else the 
-z-score won't make sense.  You'll now have a list of good data in ```clean_row_data```.
+z-score won't make sense.  
+You'll now have a list of good data in ```clean_row_data```.
  
 #NEW7
 ##Excellent, here's a good way to tackle interpolation.  
