@@ -7,14 +7,14 @@ If you want all rows but certain columns, use this code and replace the 'c' with
 \t sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()
 To select certain rows and certain columns, use this (start from 0):
 \t sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()
-
+ 
 #NEW3
 Absolutely.  Here's how to fit a curve to a list of numbers using numpy. 
 You call it on a list of numbers to get the polynomial 
 coefficients (ax^2 + bx + c), like this:
  \t polys = np.polyfit(x, y, degree=2)
  You can now use the numbers stored in polys to report or calculate the curve fit.
- 
+  
 #NEW4
 Okay!  To split your data up into pieces is pretty straight forward once you know the syntax.
 I gave you a pandas DataFrame, which is VERY similar to a dataframe in R (coincidence???)
@@ -38,7 +38,7 @@ To get specific values from a list, you can slice the list like this:
 \t evens = my_list[1::2]
 \t every_third = my_list[::3]
  where my_list is any list.  Note: pandas dataframes are not lists.  
- 
+  
 #NEW5
 No problem. For the mean of the pandas data (raw), you can use the mean function.
 To take a mean of a row:
@@ -58,7 +58,7 @@ where 'r' are numbers of the rows (start from 0).
 To get the standard deviation of a list, use numpy like this:
 \t std_dev = np.std(my_list)
 where my_list is a list.
-
+ 
 #NEW6
 Cool.  So we'll define our outliers as being 1 z score away,
 we arrive at a formula we can apply on our pandas dataframe row with both of the following lines:
@@ -66,7 +66,7 @@ we arrive at a formula we can apply on our pandas dataframe row with both of the
 \t clean_row_data = trial_results.iloc[row, cols_to_keep].to_list()
 where you fill in a number for row.  NOTE: you have to do this per row, or else the 
 z-score won't make sense.  You'll now have a list of good data in clean_row_data.
-
+ 
 #NEW7
 Excellent, here's a good way to tackle interpolation.  We'll use SciPy
 to create a function that will allow us to fit a function to our x,y data, 
@@ -81,7 +81,7 @@ or on a whole list of values to get all those values fit to the curve:
 \t x = np.arange(75, 99, 2) # x now contains a list from 75 to 99, by 2s.
 \t y = func(x)
 which would then return the predicted values for our R ratio at 75, 77, ...97, 99% SpO2 in a list.
-
+ 
 #NEW8
 Right.  So the reason we don't calibrate each time we use the device is
 that we've gone through the process to relate the device's average response
