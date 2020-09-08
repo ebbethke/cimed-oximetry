@@ -3,7 +3,9 @@
 To take the average of all the rows,
 you can use the following code:
 <br>
+<code>
 ```sao2_averages = trial_results.mean(axis=1).to_list()```
+</code>
 <br>
 If you want all rows but certain columns, use this code and replace the ```c``` with numbers (start from 0):
 <br>
