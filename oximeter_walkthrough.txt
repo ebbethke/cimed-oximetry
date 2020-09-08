@@ -3,17 +3,15 @@
 To take the average of all the rows,
 you can use the following code:
 <br>
-<code>
-```sao2_averages = trial_results.mean(axis=1).to_list()```
-</code>
+$~~~~$```sao2_averages = trial_results.mean(axis=1).to_list()```
 <br>
 If you want all rows but certain columns, use this code and replace the ```c``` with numbers (start from 0):
 <br>
-```sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()```
+$~~~~$```sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()```
 <br>
 To average certain rows from only certain columns, use this (start from 0):
 <br>
-```sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()```
+$~~~~$```sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()```
 <br>
  
 #NEW3
@@ -22,11 +20,11 @@ To average certain rows from only certain columns, use this (start from 0):
 You call it on a list of numbers to get the polynomial 
 coefficients ($ax^2 + bx + c$), like this:
 <br>
-```polys = np.polyfit(x, y, deg=2)```<br>
-```polys = [round(coeff,6) for coeff in polys]```
+$~~~~$```polys = np.polyfit(x, y, deg=2)```<br>
+$~~~~$```polys = [round(coeff,6) for coeff in polys]```
 <br>
 Where ```x``` and ```y``` are lists.  The second line takes care of floating point errors.
-```polys``` will now contain the numeric values for ```a, b, c```.
+$~~~~$```polys``` will now contain the numeric values for ```a, b, c```.
 You can now use the numbers stored in polys to report or calculate the curve fit.
   
 #NEW4
