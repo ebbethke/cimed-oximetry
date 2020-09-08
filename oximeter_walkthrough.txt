@@ -3,28 +3,28 @@
 To take the average of all the rows,
 you can use the following code:
 <br>
-$~~~~$```sao2_averages = trial_results.mean(axis=1).to_list()```
+&nbsp; &nbsp; ```sao2_averages = trial_results.mean(axis=1).to_list()```
 <br>
 If you want all rows but certain columns, use this code and replace the ```c``` with numbers (start from 0):
 <br>
-$~~~~$```sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()```
+&nbsp; &nbsp; ```sel_col_averages = trial_results.iloc[:,[c,c]].mean(axis=1).to_list()```
 <br>
 To average certain rows from only certain columns, use this (start from 0):
 <br>
-$~~~~$```sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()```
+&nbsp; &nbsp; ```sel_row_col_averages = trial_results.iloc[[r,r],[c,c]].mean(axis=1).to_list()```
 <br>
  
 #NEW3
 ##Absolutely.  Here's how to fit a curve to a list of numbers using numpy.
-&nbsp;
+&nbsp; 
 You call it on a list of numbers to get the polynomial 
 coefficients ($ax^2 + bx + c$), like this:
 <br>
-$~~~~$```polys = np.polyfit(x, y, deg=2)```<br>
-$~~~~$```polys = [round(coeff,6) for coeff in polys]```
+&nbsp; &nbsp; ```polys = np.polyfit(x, y, deg=2)```<br>
+&nbsp; &nbsp; ```polys = [round(coeff,6) for coeff in polys]```
 <br>
 Where ```x``` and ```y``` are lists.  The second line takes care of floating point errors.
-$~~~~$```polys``` will now contain the numeric values for ```a, b, c```.
+&nbsp; &nbsp; ```polys``` will now contain the numeric values for ```a, b, c```.
 You can now use the numbers stored in polys to report or calculate the curve fit.
   
 #NEW4
@@ -33,32 +33,32 @@ You can now use the numbers stored in polys to report or calculate the curve fit
 I gave you a pandas DataFrame, which is VERY similar to a dataframe in R (coincidence???)
 To get one column, use the 'iloc' or 'index location' method like so:
 <br>
-```my_column = trial_results.iloc[:, col].to_list()```
+&nbsp; &nbsp; ```my_column = trial_results.iloc[:, col].to_list()```
 <br>
 where ```col``` is a number (start from 0).  To get a range of columns by number, 
 you can flatten them to one list (sticking one column after the other) like so:
 <br>
-```my_columns = trial_results[:, [2,3,5,8]].values.flatten('F')```
+&nbsp; &nbsp; ```my_columns = trial_results[:, [2,3,5,8]].values.flatten('F')```
 <br>
 <br>
 To grab a row, use the 'iloc' index again like this:
 <br>
-```my_row = trial_results[row, :].to_list()```
+&nbsp; &nbsp; ```my_row = trial_results[row, :].to_list()```
 where ```row``` is a number.  To get multiple rows, you can flatten like so:
 <br>
-```my_rows = trial_results.iloc[[1,2,4],:].values.flatten('C')```
+&nbsp; &nbsp; ```my_rows = trial_results.iloc[[1,2,4],:].values.flatten('C')```
 <br>
 which will put the rows one after the other into the list.
 <br>
 <br>
 To get specific values from a list, you can slice the list like this:
 <br>
-```first_five = my_list[:5]```<br>
-```last three = my_list[-3:]```<br>
-```second_to_eighth = my_list[2:9]```<br>
-```odds = my_list[0::2]```<br>
-```evens = my_list[1::2]```<br>
-```every_third = my_list[::3]```
+&nbsp; &nbsp; ```first_five = my_list[:5]```<br>
+&nbsp; &nbsp; ```last three = my_list[-3:]```<br>
+&nbsp; &nbsp; ```second_to_eighth = my_list[2:9]```<br>
+&nbsp; &nbsp; ```odds = my_list[0::2]```<br>
+&nbsp; &nbsp; ```evens = my_list[1::2]```<br>
+&nbsp; &nbsp; ```every_third = my_list[::3]```
 <br>
 where my_list is any list.  Note: pandas dataframes are not lists.  
   
@@ -67,32 +67,32 @@ where my_list is any list.  Note: pandas dataframes are not lists.
 &nbsp;
 To take a mean of a row:
 <br>
-```row_mean = trial_results.iloc[row, :].mean()```
+&nbsp; &nbsp; ```row_mean = trial_results.iloc[row, :].mean()```
 <br>
 where ```row``` is a number of the row you want (start from 0)
 ...
 To take the mean of a list, use numpy like this:
 <br>
-```np.mean(my_list)```
+&nbsp; &nbsp; ```np.mean(my_list)```
 <br>
 where ```my_list``` is a list.
 <br>
 <br>
 To get a standard deviation of a pandas dataframe row, use:
 <br>
-```row_std_dev = trial_results.iloc[row, :].std(axis=1)```
+&nbsp; &nbsp; ```row_std_dev = trial_results.iloc[row, :].std(axis=1)```
 <br>
 Where ```row``` is a number (start from 0).
 To get standard deviation for multipl rows, use this:
 <br>
-```rows_std_dev = trial_results.iloc[[r,r,r], :].std(axis=1).to_list()```
+&nbsp; &nbsp; ```rows_std_dev = trial_results.iloc[[r,r,r], :].std(axis=1).to_list()```
 <br>
 where ```r``` are numbers of the rows (start from 0).
 <br>
 <br>
 To get the standard deviation of a list, use numpy like this:
 <br>
-```std_dev = np.std(my_list)```
+&nbsp; &nbsp; ```std_dev = np.std(my_list)```
 <br>
 where ```my_list``` is a list.
  
@@ -102,8 +102,8 @@ where ```my_list``` is a list.
 So we'll define our outliers as being 1.25 z score away,
 we arrive at a formula we can apply on our pandas dataframe row with both of the following lines:
 <br>
-```cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1.25)[0]```<br>
-```clean_row_data = trial_results.iloc[row, cols_to_keep].to_list()```
+&nbsp; &nbsp; ```cols_to_keep = np.where(abs(zscore(trial_results.iloc[row, :].to_list())) < 1.25)[0]```<br>
+&nbsp; &nbsp; ```clean_row_data = trial_results.iloc[row, cols_to_keep].to_list()```
 <br>
 where you fill in a number for ```row```.  NOTE: you have to do this per row, or else the 
 z-score won't make sense.  
@@ -116,19 +116,19 @@ function to our x,y data, and then call that function with any
 new x_new to get a proper y_new value.
 Do this like so:
 <br>
-```func =  interp1d(x, y, kind='quadratic', fill_value='extrapolate')```
+&nbsp; &nbsp; ```func =  interp1d(x, y, kind='quadratic', fill_value='extrapolate')```
 <br>
 ...where ```x``` and ```y``` are lists.  To call this on a column from the trial data, use this:
 <br>
-```func = interp1d(trial_results.index.to_list(), trial_results.iloc[:, col].to_list(), kind='quadratic', fill_value='extrapolate')```
+&nbsp; &nbsp; ```func = interp1d(trial_results.index.to_list(), trial_results.iloc[:, col].to_list(), kind='quadratic', fill_value='extrapolate')```
 <br>
 this function returns... another function! we can call it to get other values like this:
 <br>
-```res = func(87.5)```
+&nbsp; &nbsp; ```res = func(87.5)```
 or on a whole list of values to get all those values fit to the curve:
 <br>
-```x = np.arange(75, 99, 2) # x now contains a list from 75 to 99, by 2s.```<br>
-```y = func(x)```
+&nbsp; &nbsp; ```x = np.arange(75, 99, 2) # x now contains a list from 75 to 99, by 2s.```<br>
+&nbsp; &nbsp; ```y = func(x)```
 <br>
 which would then return the predicted values for our ```R``` ratio at 75, 77, ...97, 99% SpO2 in a list.
  
